@@ -1,8 +1,30 @@
 from pygtrie import CharTrie
 import copy
 
+"""
+Split a Chinese Pinyin phrase into a list of possible permutations of Pinyin words.This is the "example" module.
 
+For example,
+
+>>> from pinyinsplit import PinyinSplit
+>>> pys = PinyinSplit()
+>>> pys.split('XiangGangDaXue')
+[['Xiang', 'Gang', 'Da', 'Xue'], ['Xiang', 'Gang', 'Da', 'Xu', 'e'], ['Xi', 'ang', 'Gang', 'Da', 'Xue'], ['Xi', 'ang', 'Gang', 'Da', 'Xu', 'e']]
+"""
 class PinyinSplit:
+    """Split a Chinese Pinyin phrase into a list of possible permutations of Pinyin words.
+
+    It returns a list of all possible permutations of valid Pinyin words.
+    If the Pinyin phrase cannot be exhaustively split into valid Pinyin words, an empty list will be returned.
+
+    >>> from pinyinsplit import PinyinSplit
+    >>> pys = PinyinSplit()
+    >>> pys.split('shediaoyingxiongchuan')
+    [['she', 'diao', 'ying', 'xiong', 'chuan'], ['she', 'diao', 'ying', 'xiong', 'chu', 'an'], ['she', 'di', 'ao', 'ying', 'xiong', 'chuan'], ['she', 'di', 'ao', 'ying', 'xiong', 'chu', 'an']]
+    >>> pys.split('shediaoyingxiongchuanxyz')
+    []
+    
+    """
     pylist = [
         'a', 'ai', 'an', 'ang', 'ao',
         'ba', 'bai', 'ban', 'bang', 'bao', 'bei', 'ben', 'beng',
@@ -84,3 +106,7 @@ class PinyinSplit:
                 else:
                     results.append(words_copy)
         return results
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
