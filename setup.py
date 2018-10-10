@@ -18,7 +18,7 @@ setup(
         'Topic :: Text Processing :: Linguistic',
     ],
     keywords='chinese pinyin',
-    url='https://gitlab.com/neuronetic/pinyinsplit',
+    url='https://github.com/throput/pinyinsplit',
     author='Thomas Lee',
     author_email='thomaslee@throput.com',
     pymodule='pinyinsplit',
