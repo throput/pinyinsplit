@@ -23,7 +23,7 @@ setup(
     author_email='thomaslee@throput.com',
     pymodule='pinyinsplit',
     install_requires=[
-        'pygtrie',
+        'pygtrie>=2.3',
     ],
     include_page_data=True,
     zip_safe=False
