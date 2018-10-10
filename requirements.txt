@@ -1,1 +1,1 @@
-pygtrie==2.3
+pygtrie>=2.3
