@@ -9,7 +9,7 @@ def readme():
 setup(
     name='pinyinsplit',
     version='0.1',
-    description='A Python library to split a Chinese Pinyin phrase into possible permuntations of Chinese Pinyin words',
+    description='A Python library to split a Chinese Pinyin phrase into possible permutations of Chinese Pinyin words',
     long_description=readme(),
     classifiers=[
         'Development Status :: 3 - Alpha',
