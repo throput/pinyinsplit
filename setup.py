@@ -8,7 +8,7 @@ def readme():
 
 setup(
     name='pinyinsplit',
-    version='0.1',
+    version='0.1.1',
     description='A Python library to split a Chinese Pinyin phrase into possible permutations of Chinese Pinyin words',
     long_description=readme(),
     classifiers=[
