@@ -11,6 +11,35 @@ For example,
 >>> pys.split('XiangGangDaXue')
 [['Xiang', 'Gang', 'Da', 'Xue'], ['Xiang', 'Gang', 'Da', 'Xu', 'e'], ['Xi', 'ang', 'Gang', 'Da', 'Xue'], ['Xi', 'ang', 'Gang', 'Da', 'Xu', 'e']]
 """
+
+pinyin_chars = {
+    'āáǎà': 'a',
+    'ĀÁǍÀ': 'A',
+    'ēéěè': 'e',
+    'ĒÉĚÈ': 'E',
+    'īíǐì': 'i',
+    'ĪÍǏÌ': 'I',
+    'ōóǒò': 'o',
+    'ŌÓǑÒ': 'O',
+    'ūúǔù': 'u',
+    'ŪÚǓÙ': 'U',
+    'ǖǘǚǜ': 'ü',
+    'ǕǗǙǛ': 'Ü'
+}
+
+def remove_tone(word):
+    chars = []
+    for char in word:
+        found = False
+        for accented_chars in pinyin_chars:
+            if char in accented_chars:
+                chars.append(pinyin_chars[accented_chars])
+                found = True
+                break
+        if not found:
+            chars.append(char)
+    return (''.join(chars))
+
 class PinyinSplit:
     """Split a Chinese Pinyin phrase into a list of possible permutations of Pinyin words.
 
@@ -76,14 +105,14 @@ class PinyinSplit:
         'zhi', 'zhong', 'zhou', 'zhu', 'zhua', 'zhuai', 'zhuan', 'zhuang', 'zhui', 'zhun', 'zhuo',
         'zi', 'zong', 'zou', 'zu', 'zuan', 'zui', 'zun', 'zuo', 'ê'
     ]
-
+    
     def __init__(self):
         self.trie = CharTrie()
         for py in self.pylist:
             self.trie[py] = len(py)
 
     def split(self, phrase):
-        phrase_lc = phrase.lower()
+        phrase_lc = remove_tone(phrase.lower())
         split_list = []
         results = []
         if phrase:
